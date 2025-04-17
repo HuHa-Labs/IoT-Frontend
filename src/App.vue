@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, onMounted } from 'vue';
+import { ref, onMounted, provide } from 'vue';
 import TheHeader from './components/TheHeader.vue';
 const count = ref(0);
 
@@ -10,6 +10,8 @@ function increment(){
 onMounted(() => {
   console.log('Component mounted');
 });
+
+provide("count", count);
 </script>
 
 <template>
