@@ -4,9 +4,7 @@ import ChartPanel from '@/components/ChartPanel.vue'
 </script>
 
 <template>
-  <ChartPanel/>
+  <div class="!dark:text-red">
+    <ChartPanel/>
+  </div>
 </template>
-
-<style scoped>
-
-</style>

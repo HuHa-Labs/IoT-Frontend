@@ -1,19 +1,21 @@
 <script setup lang="ts">
+import { useLatestRecordStore } from '@/stores/latest-data-store.ts'
+const latestRecordStore = useLatestRecordStore();
 </script>
 
 <template>
   <div>
     <p>
-      🌡 Temperture️: 10°C
+      🌡 Temperature️: {{ latestRecordStore.temp }}°C
     </p>
     <p>
-      💦 Humidity: 30%
+      💦 Humidity: {{ latestRecordStore.humidity }}%
     </p>
     <p>
-      🔌 Electricity usage: 100W
+      🔌 Electricity usage: {{ latestRecordStore.electricityUsage }}W
     </p>
     <p>
-      🐾 Motion detected: Yes
+      🐾 Motion detected: {{ latestRecordStore.motionDetected }}
     </p>
   </div>
 </template>
