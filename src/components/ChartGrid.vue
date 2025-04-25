@@ -4,7 +4,7 @@ import ChartPanel from '@/components/ChartPanel.vue'
 </script>
 
 <template>
-  <div class="!dark:text-red">
-    <ChartPanel/>
+  <div>
+    <ChartPanel title="Last Recorded Data"></ChartPanel>
   </div>
 </template>
