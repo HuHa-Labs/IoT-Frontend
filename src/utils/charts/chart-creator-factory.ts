@@ -1,6 +1,6 @@
 import { type Component } from 'vue'
-import { ChartType } from '@/utils/charts/chart-type.enum.ts'
-import { LastRecordChartCreator } from '@/utils/charts/last-record-chart-creator.ts'
+import { ChartType } from './chart-type.enum.ts'
+import { LastRecordChartCreator } from './last-record-chart-creator.ts'
 
 export class ChartCreatorFactory{
   createComponent(chartType: ChartType) : Component{

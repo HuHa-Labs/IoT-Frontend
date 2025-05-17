@@ -1,5 +1,6 @@
 import { defineStore } from "pinia";
 import { ref } from "vue";
+import { Utils } from '@/utils/utils.ts'
 
 export const useMultiDataStore = defineStore("multiData", () => {
   const config = ref({

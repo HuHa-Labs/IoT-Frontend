@@ -1,4 +1,4 @@
-import type { RandomConfig } from '@/utils/chart-config-type.ts'
+import type { RandomConfig } from './chart-config-type.ts'
 
 export class Utils {
   public static getRandomData(stats: RandomConfig){
