@@ -46,9 +46,8 @@ export const useMultiDataStore = defineStore("multiData", () => {
     max: 100
   });
 
-  const labels = Utils.getMonths({count: 7});
-  const data = ref{
-    labels: labels,
+  const data = {
+    labels: Utils.getMonths(9),
     datasets: [
       {
         label: 'Dataset 1',
