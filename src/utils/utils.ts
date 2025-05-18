@@ -16,6 +16,8 @@ export class Utils {
   }
 
   public static getNumbers(data: RandomConfig) : number[]{
-    return new Array(data.count).fill(0).map(() => this.getRandomInRange(data.min, data.max));
+    return Array.from({ length: data.count })
+      .fill(0)
+      .map(() => this.getRandomInRange(data.min, data.max));
   }
 }
