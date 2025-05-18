@@ -1,11 +1,40 @@
 import { defineStore } from "pinia";
-import { ref } from "vue";
+import { type Ref, ref } from 'vue'
 import { Utils } from '@/utils/utils.ts'
-
+import { HexColor } from '@/utils/hex-color.enum.ts'
+import type { ChartConfiguration, ChartData } from 'chart.js'
+import type { RandomConfig } from '@/utils/chart-config-type.ts'
 export const useMultiDataStore = defineStore("multiData", () => {
-  const config = ref({
+  const DATA_COUNT : number = 12;
+  const data : Ref<ChartData<'line'>> = ref({
+    labels: Utils.getMonths(DATA_COUNT),
+    datasets: [
+      {
+        label: "Temperature",
+        data: Utils.getNumbers({
+          count: DATA_COUNT,
+          min: -10,
+          max: 40,
+        } as RandomConfig),
+        borderColor: HexColor.Red,
+        yAxisID: 'y',
+      },
+      {
+        label: "Humidity",
+        data: Utils.getNumbers({
+          count: DATA_COUNT,
+          min: 0,
+          max: 100,
+        } as RandomConfig),
+        borderColor: HexColor.Blue,
+        yAxisID: 'y1',
+      }
+    ]
+  });
+
+  const config : Ref<ChartConfiguration<'line'>> = ref({
     type: 'line',
-    data: data,
+    data: data.value,
     options: {
       responsive: true,
       interaction: {
@@ -13,62 +42,42 @@ export const useMultiDataStore = defineStore("multiData", () => {
         intersect: false,
       },
       stacked: false,
-      plugins: {
-        title: {
-          display: true,
-          text: 'Chart.js Line Chart - Multi Axis'
-        }
-      },
       scales: {
         y: {
           type: 'linear',
           display: true,
           position: 'left',
+          title: {
+            display: true,
+            text: '°C', // ← Your unit
+            color: 'black',
+            font: {
+              size: 14,
+              weight: 'bold',
+            }
+          },
         },
         y1: {
           type: 'linear',
           display: true,
           position: 'right',
-
-          // grid line settings
           grid: {
             drawOnChartArea: false, // only want the grid lines for one axis to show up
           },
+          title: {
+            display: true,
+            text: '%', // ← Your unit
+            color: 'black',
+            font: {
+              size: 14,
+              weight: 'bold',
+            }
+          }
         },
       }
     },
   });
-
-  const DATA_COUNT = ref(7);
-  const NUMBER_CFG = ref({
-    count: DATA_COUNT,
-    min: -100,
-    max: 100
-  });
-
-  const data = {
-    labels: Utils.getMonths(9),
-    datasets: [
-      {
-        label: 'Dataset 1',
-        data: Utils.numbers(NUMBER_CFG),
-        borderColor: Utils.CHART_COLORS.red,
-        backgroundColor: Utils.transparentize(Utils.CHART_COLORS.red, 0.5),
-        yAxisID: 'y',
-      },
-      {
-        label: 'Dataset 2',
-        data: Utils.numbers(NUMBER_CFG),
-        borderColor: Utils.CHART_COLORS.blue,
-        backgroundColor: Utils.transparentize(Utils.CHART_COLORS.blue, 0.5),
-        yAxisID: 'y1',
-      }
-    ]
-  });
   return {
-    temp,
-    humidity,
-    electricityUsage,
-    motionDetected,
-  };
+    config,
+  }
 });
