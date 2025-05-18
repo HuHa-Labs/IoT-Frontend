@@ -1,19 +1,6 @@
 import type { RandomConfig } from './chart-config-type.ts'
 
 export class Utils {
-  public static getRandomData(stats: RandomConfig){
-    const { count, min, max } = stats;
-
-    if (count <= 1) {
-      return [min];
-    }
-
-    return Array.from(
-      { length: count },
-      () => this.getRandomInRange(min, max)
-    );
-  }
-
   public static getMonths(countOrFrom: number, to?: number): string[] {
     const months = ["", "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 
@@ -26,5 +13,9 @@ export class Utils {
 
   static getRandomInRange(min: number, max: number): number {
     return Math.random() * (max - min) + min;
+  }
+
+  public static getNumbers(data: RandomConfig) : number[]{
+    return new Array(data.count).fill(0).map(() => this.getRandomInRange(data.min, data.max));
   }
 }
