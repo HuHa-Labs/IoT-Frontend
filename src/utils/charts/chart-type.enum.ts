@@ -1,3 +1,4 @@
 export enum ChartType {
-  LastRecordChart
+  LastRecordChart,
+  MultiChart,
 }

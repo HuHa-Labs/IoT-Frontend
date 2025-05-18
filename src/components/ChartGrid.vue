@@ -4,6 +4,7 @@ import { ChartType } from '@/utils/charts/chart-type.enum'
 const chartCreatorFactory = new ChartCreatorFactory();
 const chartToCreate: ChartType[] = [
   ChartType.LastRecordChart,
+  ChartType.MultiChart,
 ]
 const chartComponents = chartToCreate.map(ct => chartCreatorFactory.createComponent(ct));
 
