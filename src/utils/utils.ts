@@ -22,10 +22,7 @@ export class Utils {
       .map(() => this.getRandomInRange(data.min, data.max));
   }
 
-  public static getColorWithOpacity(colorInHex: string, opacity: number) : string {
-    if(Object.values(HexColor).includes(colorInHex as HexColor) || opacity < 0 || opacity > 1){
-      return HexColor.Black;
-    }
-    return HexColor + Math.round(opacity * 255).toString(16);
+  public static getColorWithOpacity(colorInHex: HexColor, opacity: number) : string {
+    return colorInHex + Math.round(opacity * 255).toString(16);
   }
 }
