@@ -4,4 +4,5 @@ export enum HexColor {
   Blue = '#0000FF',
   Orange = '#FFA500',
   Purple = '#800080',
+  Black = '#000000',
 }

@@ -37,7 +37,7 @@ export const useMultiDataStore = defineStore("multiData", () => {
           max: 100,
         } as RandomConfig),
         borderColor: HexColor.Green,
-        backgroundColor: HexColor.Purple + "7f",
+        backgroundColor: Utils.getColorWithOpacity(HexColor.Green, 0.5),
         type: 'bar',
       }
     ]
