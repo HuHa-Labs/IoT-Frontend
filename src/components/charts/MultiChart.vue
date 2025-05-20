@@ -8,10 +8,11 @@
 import { Line } from 'vue-chartjs';
 import {
   Chart as ChartJS, Title, Tooltip, Legend, LineElement, LinearScale,
-  CategoryScale, PointElement
-} from 'chart.js'
+  CategoryScale, PointElement, BarElement
+} from 'chart.js';
 import { useMultiDataStore } from '@/stores/multi-data-store.ts';
+
 ChartJS.register(Title, Tooltip, Legend, LineElement, LinearScale,
-  CategoryScale, PointElement);
+  CategoryScale, PointElement, BarElement, );
 const multiDataStore = useMultiDataStore();
 </script>

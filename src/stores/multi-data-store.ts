@@ -6,7 +6,7 @@ import type { ChartConfiguration, ChartData } from 'chart.js'
 import type { RandomConfig } from '@/utils/chart-config-type.ts'
 export const useMultiDataStore = defineStore("multiData", () => {
   const DATA_COUNT : number = 12;
-  const data : Ref<ChartData<'line'>> = ref({
+  const data : Ref<ChartData<'line'|'bar'>> = ref({
     labels: Utils.getMonths(DATA_COUNT),
     datasets: [
       {
@@ -20,7 +20,7 @@ export const useMultiDataStore = defineStore("multiData", () => {
         yAxisID: 'y',
       },
       {
-        label: "Humidity",
+        label: "Electricity Usage",
         data: Utils.getNumbers({
           count: DATA_COUNT,
           min: 0,
@@ -28,11 +28,22 @@ export const useMultiDataStore = defineStore("multiData", () => {
         } as RandomConfig),
         borderColor: HexColor.Blue,
         yAxisID: 'y1',
+      },
+      {
+        label: "Humidity",
+        data: Utils.getNumbers({
+          count: DATA_COUNT,
+          min: 0,
+          max: 100,
+        } as RandomConfig),
+        borderColor: HexColor.Green,
+        backgroundColor: HexColor.Purple + "7f",
+        type: 'bar',
       }
     ]
   });
 
-  const config : Ref<ChartConfiguration<'line'>> = ref({
+  const config : Ref<ChartConfiguration<'line'|'bar'>> = ref({
     type: 'line',
     data: data.value,
     options: {
@@ -66,7 +77,7 @@ export const useMultiDataStore = defineStore("multiData", () => {
           },
           title: {
             display: true,
-            text: '%', // ← Your unit
+            text: 'W', // ← Your unit
             color: 'black',
             font: {
               size: 14,
