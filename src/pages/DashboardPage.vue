@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import ChartGrid from '@/components/ChartGrid.vue'
+import ChartGrid from '@/components/ChartGrid.vue';
 </script>
 
 <template>

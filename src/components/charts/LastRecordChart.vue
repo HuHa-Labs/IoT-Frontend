@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useLatestRecordStore } from '@/stores/latest-data-store.ts'
+import { useLatestRecordStore } from '@/stores/latest-data-store.ts';
 const latestRecordStore = useLatestRecordStore();
 </script>
 
